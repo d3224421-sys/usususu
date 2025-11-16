@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Click Speed Score</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -23,46 +22,44 @@
         }
         
         .score-card {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            padding: 40px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            padding: 30px;
             text-align: center;
-            max-width: 500px;
-            width: 100%;
+            width: 400px;
+            max-width: 90%;
             position: relative;
-            overflow: hidden;
         }
         
         .title {
-            font-size: 2.5rem;
+            font-size: 28px;
             color: #333;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            font-weight: bold;
         }
         
         .rank-section {
-            margin-bottom: 30px;
-            position: relative;
+            margin-bottom: 20px;
         }
         
         .rank-label {
-            font-size: 1.2rem;
+            font-size: 18px;
             color: #666;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .rank {
-            font-size: 3rem;
+            font-size: 36px;
             font-weight: bold;
-            color: #ff6b00;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: #ff5722;
+            margin-bottom: 15px;
         }
         
         .cheetah-image {
-            width: 200px;
-            height: 150px;
-            margin: 20px auto;
+            width: 180px;
+            height: 120px;
+            margin: 15px auto;
             background-image: url('https://files.catbox.moe/2o0rtf.svg');
             background-size: contain;
             background-repeat: no-repeat;
@@ -70,137 +67,67 @@
         }
         
         .speed-section {
-            margin: 30px 0;
+            margin: 25px 0;
         }
         
         .speed-label {
-            font-size: 1.2rem;
+            font-size: 18px;
             color: #666;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .speed-value {
-            font-size: 3.5rem;
+            font-size: 42px;
             font-weight: bold;
-            color: #1a73e8;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: #2196f3;
         }
         
         .cps-label {
-            font-size: 1.5rem;
+            font-size: 20px;
             color: #444;
             margin-top: 5px;
         }
         
         .details {
-            font-size: 1.2rem;
+            font-size: 18px;
             color: #555;
             margin-top: 20px;
             background-color: #f5f5f5;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 12px;
+            border-radius: 8px;
         }
         
         .stars {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 25px 0;
+            gap: 8px;
+            margin: 20px 0;
         }
         
         .star {
-            font-size: 2.5rem;
+            font-size: 30px;
             color: #ffc107;
-            text-shadow: 0 0 10px rgba(255, 193, 7, 0.7);
-            animation: twinkle 2s infinite alternate;
-        }
-        
-        .star:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-        
-        .star:nth-child(3) {
-            animation-delay: 1s;
-        }
-        
-        .star:nth-child(4) {
-            animation-delay: 1.5s;
-        }
-        
-        .star:nth-child(5) {
-            animation-delay: 2s;
-        }
-        
-        @keyframes twinkle {
-            0% {
-                transform: scale(1);
-                opacity: 0.7;
-            }
-            100% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
-        }
-        
-        .decoration {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, rgba(255,215,0,0) 70%);
-        }
-        
-        .decoration-1 {
-            top: -50px;
-            left: -50px;
-        }
-        
-        .decoration-2 {
-            bottom: -50px;
-            right: -50px;
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
         }
         
         .btn {
-            background: linear-gradient(to right, #ff6b00, #ff8c00);
+            background-color: #4caf50;
             color: white;
             border: none;
             padding: 12px 30px;
-            font-size: 1.1rem;
-            border-radius: 50px;
+            font-size: 16px;
+            border-radius: 30px;
             cursor: pointer;
-            margin-top: 25px;
-            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
-            transition: all 0.3s ease;
+            margin-top: 20px;
+            transition: background-color 0.3s;
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.6);
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="score-card pulse">
-        <div class="decoration decoration-1"></div>
-        <div class="decoration decoration-2"></div>
-        
+    <div class="score-card">
         <h1 class="title">Check Your Score</h1>
         
         <div class="stars">
@@ -230,24 +157,5 @@
         
         <button class="btn">Try Again</button>
     </div>
-
-    <script>
-        // Add some interactive effects
-        document.querySelector('.score-card').addEventListener('mouseenter', function() {
-            this.classList.add('pulse');
-        });
-        
-        document.querySelector('.score-card').addEventListener('mouseleave', function() {
-            this.classList.remove('pulse');
-        });
-        
-        // Add click effect to button
-        document.querySelector('.btn').addEventListener('click', function() {
-            this.textContent = 'Restarting...';
-            setTimeout(() => {
-                this.textContent = 'Try Again';
-            }, 1500);
-        });
-    </script>
 </body>
 </html>
