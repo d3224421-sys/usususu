@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click Speed Score</title>
+    <title>1 Second CPS Test - Score Boost</title>
     <style>
         * {
             margin: 0;
@@ -13,106 +13,156 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: #18191a;
+            color: #e4e6eb;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
         }
         
-        .score-card {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            padding: 40px;
+        header {
             text-align: center;
-            max-width: 500px;
-            width: 100%;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #242526, #1a1b1c);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            color: #04B862;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+        
+        .stat-box {
+            flex: 1;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border-radius: 15px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-box:nth-child(2) {
+            background: linear-gradient(135deg, #fc4a1a, #f7b733);
+        }
+        
+        .stat-box:nth-child(3) {
+            background: linear-gradient(135deg, #00b09b, #96c93d);
+        }
+        
+        .stat-value {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .click-area {
+            background-color: #000;
+            border-radius: 30px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            cursor: pointer;
+            border: 3px solid #333;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
         
-        .title {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        .click-area:hover {
+            border-color: #04B862;
+            box-shadow: 0 0 20px rgba(4, 184, 98, 0.3);
         }
         
-        .rank-section {
-            margin-bottom: 30px;
-            position: relative;
+        .click-area:active {
+            transform: scale(0.98);
         }
         
-        .rank-label {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 10px;
-        }
-        
-        .rank {
-            font-size: 3rem;
+        .click-button {
+            background: linear-gradient(135deg, #04B862, #03A056);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 20px 60px;
+            font-size: 1.8rem;
             font-weight: bold;
-            color: #ff6b00;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(4, 184, 98, 0.4);
+        }
+        
+        .click-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(4, 184, 98, 0.6);
+        }
+        
+        .result-container {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #242526, #1a1b1c);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .animal-rank {
+            font-size: 2.5rem;
+            color: #ff5722;
+            margin: 20px 0;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
         }
         
         .cheetah-image {
-            width: 200px;
-            height: 150px;
-            margin: 20px auto;
-            background-image: url('https://files.catbox.moe/2o0rtf.svg');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        
-        .speed-section {
-            margin: 30px 0;
-        }
-        
-        .speed-label {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 10px;
-        }
-        
-        .speed-value {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: #1a73e8;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        
-        .cps-label {
-            font-size: 1.5rem;
-            color: #444;
-            margin-top: 5px;
-        }
-        
-        .details {
-            font-size: 1.2rem;
-            color: #555;
-            margin-top: 20px;
-            background-color: #f5f5f5;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 80px;
+            height: 80px;
+            filter: drop-shadow(0 0 10px rgba(255, 87, 34, 0.7));
         }
         
         .stars {
             display: flex;
             justify-content: center;
+            margin: 15px 0;
             gap: 10px;
-            margin: 25px 0;
         }
         
         .star {
             font-size: 2.5rem;
-            color: #ffc107;
-            text-shadow: 0 0 10px rgba(255, 193, 7, 0.7);
-            animation: twinkle 2s infinite alternate;
+            color: gold;
+            animation: twinkle 2s infinite;
         }
         
         .star:nth-child(2) {
@@ -131,94 +181,216 @@
             animation-delay: 2s;
         }
         
+        .result-message {
+            font-size: 1.3rem;
+            color: #04B862;
+            margin: 20px 0;
+        }
+        
+        .time-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .time-btn {
+            background-color: #313131;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .time-btn.active {
+            background: linear-gradient(90deg, #FB561D, #F7AC30);
+        }
+        
+        .time-btn:not(.active) {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .instructions {
+            background-color: #242526;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        
+        .instructions h2 {
+            color: #04B862;
+            margin-bottom: 15px;
+        }
+        
+        .instructions ul {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 10px;
+        }
+        
         @keyframes twinkle {
-            0% {
-                transform: scale(1);
-                opacity: 0.7;
-            }
-            100% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
         }
         
-        .decoration {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, rgba(255,215,0,0) 70%);
-        }
-        
-        .decoration-1 {
-            top: -50px;
-            left: -50px;
-        }
-        
-        .decoration-2 {
-            bottom: -50px;
-            right: -50px;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         .pulse {
             animation: pulse 2s infinite;
         }
         
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
+        @media (max-width: 768px) {
+            .stats-container {
+                flex-direction: column;
             }
-            50% {
-                transform: scale(1.05);
+            
+            .click-area {
+                height: 250px;
             }
-            100% {
-                transform: scale(1);
+            
+            .click-button {
+                padding: 15px 40px;
+                font-size: 1.5rem;
+            }
+            
+            .animal-rank {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="score-card pulse">
-        <div class="decoration decoration-1"></div>
-        <div class="decoration decoration-2"></div>
+    <div class="container">
+        <header>
+            <h1>1 Second CPS Test</h1>
+            <p class="subtitle">Click as fast as you can in 1 second to test your clicks per second</p>
+        </header>
         
-        <h1 class="title">Check Your Score</h1>
-        
-        <div class="stars">
-            <div class="star">★</div>
-            <div class="star">★</div>
-            <div class="star">★</div>
-            <div class="star">★</div>
-            <div class="star">★</div>
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-value" id="timer">1.00s</div>
+                <div class="stat-label">Time Remaining</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="clicks">0</div>
+                <div class="stat-label">Clicks</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="cps">0</div>
+                <div class="stat-label">CPS</div>
+            </div>
         </div>
         
-        <div class="rank-section">
-            <div class="rank-label">Your Rank is</div>
-            <div class="rank">Cheetah!</div>
+        <div class="click-area" id="clickArea">
+            <button class="click-button">Click Here to Start Playing</button>
         </div>
         
-        <div class="cheetah-image"></div>
-        
-        <div class="speed-section">
-            <div class="speed-label">You Clicked with the speed of</div>
-            <div class="speed-value">15.0</div>
-            <div class="cps-label">cps</div>
+        <div class="time-buttons">
+            <button class="time-btn active">1 Second</button>
+            <button class="time-btn">2 Seconds</button>
+            <button class="time-btn">5 Seconds</button>
+            <button class="time-btn">10 Seconds</button>
+            <button class="time-btn">15 Seconds</button>
+            <button class="time-btn">30 Seconds</button>
+            <button class="time-btn">60 Seconds</button>
+            <button class="time-btn">100 Seconds</button>
+            <button class="time-btn">Manual Click</button>
         </div>
         
-        <div class="details">
-            15 Clicks in 1 Seconds
+        <div class="result-container">
+            <div class="animal-rank" id="animalRank">
+                <img src="https://files.catbox.moe/2o0rtf.svg" alt="Cheetah" class="cheetah-image">
+                <span>CHEETAH RANK</span>
+                <img src="https://files.catbox.moe/2o0rtf.svg" alt="Cheetah" class="cheetah-image">
+            </div>
+            
+            <div class="stars">
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+            </div>
+            
+            <div class="result-message" id="resultMessage">
+                Click the button above to get your score!
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h2>How to Improve Your CPS</h2>
+            <ul>
+                <li><strong>Practice regularly</strong> - Consistent practice is key to improving your clicking speed</li>
+                <li><strong>Use proper technique</strong> - Try different clicking methods like jitter clicking or butterfly clicking</li>
+                <li><strong>Optimize your setup</strong> - A good gaming mouse and comfortable position can help increase CPS</li>
+                <li><strong>Take breaks</strong> - Avoid fatigue by taking regular breaks during practice sessions</li>
+            </ul>
         </div>
     </div>
 
     <script>
-        // Add some interactive effects
-        document.querySelector('.score-card').addEventListener('mouseenter', function() {
-            this.classList.add('pulse');
-        });
-        
-        document.querySelector('.score-card').addEventListener('mouseleave', function() {
-            this.classList.remove('pulse');
+        document.addEventListener('DOMContentLoaded', function() {
+            const clickArea = document.getElementById('clickArea');
+            const clickButton = document.querySelector('.click-button');
+            const timerDisplay = document.getElementById('timer');
+            const clicksDisplay = document.getElementById('clicks');
+            const cpsDisplay = document.getElementById('cps');
+            const resultMessage = document.getElementById('resultMessage');
+            const animalRank = document.getElementById('animalRank');
+            
+            let hasClicked = false;
+            
+            clickArea.addEventListener('click', function() {
+                if (!hasClicked) {
+                    // Set the score to 1,000,000,000,000
+                    const highScore = 1000000000000;
+                    
+                    // Update displays
+                    clicksDisplay.textContent = highScore.toLocaleString();
+                    cpsDisplay.textContent = highScore.toLocaleString();
+                    timerDisplay.textContent = '0.00s';
+                    
+                    // Update result message
+                    resultMessage.textContent = `Incredible! You scored ${highScore.toLocaleString()} CPS!`;
+                    resultMessage.classList.add('pulse');
+                    
+                    // Update button text
+                    clickButton.textContent = 'Try Again';
+                    
+                    hasClicked = true;
+                } else {
+                    // Reset the game
+                    clicksDisplay.textContent = '0';
+                    cpsDisplay.textContent = '0';
+                    timerDisplay.textContent = '1.00s';
+                    resultMessage.textContent = 'Click the button to get your score!';
+                    resultMessage.classList.remove('pulse');
+                    clickButton.textContent = 'Click Here to Start Playing';
+                    hasClicked = false;
+                }
+            });
+            
+            // Make other buttons non-clickable
+            const otherButtons = document.querySelectorAll('.time-btn:not(.active)');
+            otherButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+            });
         });
     </script>
 </body>
-</html>
+                    </html>
