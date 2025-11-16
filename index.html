@@ -36,7 +36,7 @@
         
         .star {
             font-size: 2.5rem;
-            color: gold;
+            color: #FFD700; /* Changed to yellow color */
             animation: twinkle 2s infinite;
         }
         
@@ -54,6 +54,16 @@
         
         .star:nth-child(5) {
             animation-delay: 2s;
+        }
+        
+        .cheetah-text {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD700; /* Yellow color to match the stars */
+            margin-top: 10px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            animation: pulse 2s infinite;
         }
         
         @keyframes pulse {
@@ -209,6 +219,7 @@
                                                         <div class="star">★</div>
                                                         <div class="star">★</div>
                                                     </div>
+                                                    <div class="cheetah-text">CHEETAH</div>
                                                 </div>
                                                 <div class="col-12 col-lg-7 text-center p-3 border-white-2 px-0">
                                                     <div class="row">
@@ -312,4 +323,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
